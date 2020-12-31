@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--注册处理器类
+        bean的id应该以“/”开头
+    -->
+    <bean id="/some.do" class="com.zx.handler.SomeHandler"/>
+
+    <!--注册视图解析器
+        功能：讲逻辑视图转换为物理视图
+        逻辑视图：welcome
+        物理视图：/WEB-INF/welcome.jsp
+        其实，这个视图解析器就是做了一个机械的字符串拼接
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--注：WEB-INF下的文件只能通过后台代码访问，不能直接在前台输入路径访问-->
+</beans>
